@@ -6,6 +6,7 @@
 * [First Chapter](chapter1.md)
 
 ## 开发工具
+
 * [vim](vim/Readme.md)
 * [tmux](tmux/Readme.md)
   * [基本原理](tmux/ji-ben-yuan-li.md)
@@ -14,5 +15,6 @@
 * [bazel](bazel/Readme.md)
   * [安装](bazel/install.md)
 * [cmake](cmake/overview.md)
+  * [简单实用](cmake/overview/jian-dan-shi-yong.md)
 * [gdb](gdb/overview.md)
 
