@@ -1,16 +1,15 @@
 通过 CMake 管理的项目主目录下会有一个 `CMakeLists.txt` ，其中会包括工程包含哪些子目录等内容。 每个要管理的子目录都要包含一个 `CMakeLists.txt`， 用来管理该子目录中相关内容的构建。
 
-CMake命令是大小写不敏感的，你可以用大写，也可以用小写，也可以混写。
+CMakeLists.txt 的语法比较简单，由命令、注释和空格组成，其中命令是不区分大小写的。符号 # 后面的内容被认为是注释。命令由命令名称、小括号和参数组成，参数之间使用空格或换行进行间隔。
 
-## CMAKE文件
-一个简单的CMakeLists.txt
+一个简单的CMakeLists.txt文件如下：
 ```cmake
 cmake_minimum_required(VERSION 3.1)  # CMake 版本要求
 PROJECT(hello)                       # 项目名称
 
 add_executable(hello hello.cpp)      # 指定目标可执行文件 hello
 ```
-## 编译
+
 编译的时候，一般建立单独的文件夹，让编译过程文件和源代码区分出来，以下是一种编译的方式, 当前目录为项目源代码目录：
 ```shell
 $ mkdir build
@@ -18,7 +17,7 @@ $ cd build
 $ cmake ..
 $ make
 ```
-这样操作之后，编译的目标会位于 build 中，不会和源代码混在一起
+这样操作之后，编译的目标会位于 build 中，不会和源代码混在一起。
 
 ## 添加头文件目录
 当我们用到外部的库的时候，我们便需要添加外部库的头文件所在目录作为头文件查找目录。在 CMakeLists 中添加以下代码即可：
