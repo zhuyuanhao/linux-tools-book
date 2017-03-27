@@ -15,6 +15,6 @@
 * [bazel](bazel/Readme.md)
   * [安装](bazel/install.md)
 * [cmake](cmake/overview.md)
-  * [简单实用](cmake/overview/jian-dan-shi-yong.md)
+  * [简单使用](cmake/overview/jian-dan-shi-yong.md)
 * [gdb](gdb/overview.md)
 
