@@ -1,5 +1,7 @@
 通过 CMake 管理的项目主目录下会有一个 `CMakeLists.txt` ，其中会包括工程包含哪些子目录等内容。 每个要管理的子目录都要包含一个 `CMakeLists.txt`， 用来管理该子目录中相关内容的构建。
 
+CMake命令是大小写不敏感的，你可以用大写，也可以用小写，也可以混写。
+
 ## CMAKE文件
 一个简单的CMakeLists.txt
 ```cmake
