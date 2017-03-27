@@ -13,5 +13,6 @@
   * [命令](tmux/ming-ling.md)
 * [bazel](bazel/Readme.md)
   * [安装](bazel/install.md)
+* [cmake](cmake/overview.md)
 * [gdb](gdb/overview.md)
 
