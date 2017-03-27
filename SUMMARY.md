@@ -17,4 +17,5 @@
 
 * [bazel](bazel/Readme.md)
   * [安装](bazel/install.md)
+* [gdb](gdb/overview.md)
 
