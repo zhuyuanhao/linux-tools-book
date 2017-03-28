@@ -3,7 +3,6 @@
 ## 命令行
 
 * [Introduction](README.md)
-* [First Chapter](chapter1.md)
 
 ## 开发工具
 
