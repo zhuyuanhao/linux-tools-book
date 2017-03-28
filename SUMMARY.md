@@ -1,11 +1,9 @@
 # Summary
 * [Introduction](README.md)
 ## 命令行
-
-
+* [内存管理](command/memory.md)
 
 ## 开发工具
-
 * [vim](vim/Readme.md)
 * [tmux](tmux/Readme.md)
   * [基本原理](tmux/ji-ben-yuan-li.md)
