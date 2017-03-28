@@ -16,5 +16,7 @@
   * [安装](bazel/install.md)
 * [cmake](cmake/overview.md)
   * [基本使用](cmake/jian-dan-shi-yong.md)
+  * [变量](cmake/bian-liang.md)
+  * [命令](cmake/ming-ling.md)
 * [gdb](gdb/overview.md)
 

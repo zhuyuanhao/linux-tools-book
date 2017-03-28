@@ -1,4 +1,4 @@
-CMake使用一种平台无关的 CMakeList.txt 文件来定制编译流程，然后再根据目标平台生成所需的本地化 Makefile 和工程文件，如 Unix 的 Makefile 或 Windows 的 Visual Studio 工程。最后用户使用目标平台上的make命令编译项目。
+CMake意为cross-platform make，使用一种平台无关的 CMakeList.txt 文件来定制编译流程，然后再根据目标平台生成所需的本地化 Makefile 和工程文件，如 Unix 的 Makefile 或 Windows 的 Visual Studio 工程。最后用户使用目标平台上的make命令编译项目。
 
 CMake的主要优势
 
@@ -13,3 +13,6 @@ CMake的主要优势
 ## 参考资料
 * 主页：https://cmake.org/
 * 官方Tutorial：https://cmake.org/cmake-tutorial/
+* Wiki：https://cmake.org/Wiki/CMake
+* CMake变量：https://cmake.org/Wiki/CMake_Useful_Variables
+* CMake命令：https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html

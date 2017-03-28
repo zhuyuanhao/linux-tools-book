@@ -1,6 +1,11 @@
 通过 CMake 管理的项目主目录下会有一个 `CMakeLists.txt` ，其中会包括工程包含哪些子目录等内容。 每个要管理的子目录都要包含一个 `CMakeLists.txt`， 用来管理该子目录中相关内容的构建。注意文件名`CMakeList.txt`是大小写相关的。
 
-CMakeLists.txt 的语法比较简单，由命令、注释和空格组成，其中命令是不区分大小写的。符号`#`后面的内容被认为是注释。命令由命令名称、小括号和参数组成，参数之间使用空格或换行进行间隔。
+CMakeLists.txt 的语法比较简单：
+
+1. 符号`#`后面的内容被认为是注释
+1. 变量使用`${VAR_NAME}`方式取值，但是在 IF 控制语句中是直接使用变量名
+2. 命令使用`命令(参数1 参数2 ...)`格式，参数使用括弧括起，参数之间使用空格、换行或分号分开。参数中的源文件名可以使用双引号括起来，如`SET(SRC_LIST "main.c")`
+1. 命令是大小写无关的，参数和变量是大小写相关的
 
 一个简单的CMakeLists.txt文件如下：
 
@@ -19,72 +24,11 @@ $ cd build
 $ cmake ..        # 产生CMakeFiles,CMakeCache.txt,cmake_install.cmake等文件，并且生成了Makefile
 $ make            # 可使用 VERBOSE=1 make 或 make VERBOSE=1 查看构建过程
 ```
-
 这样操作之后，编译的目标会位于 build 中，不会和源代码混在一起。
-cccccc系统预定义变量： 系统预定义变量： 系统预定义变量： 系统预定义变量： ccccccccccccccccccccccccccccccccccccc系统预定义变量： 系统预定义变量： 系统预定义变量： 系`PROJECT_BINARY_DIR`指cmake命令执行时的目录，`PROJECT_SOURCE_DIR`指项目主CMakeLists.txt所在的目录。当执行`cmake .`时（内部编译）它们是相同的，当执行`cmake ..`或其他不在当前目录编译的命令时（外部编译）是不同的。
 
-## 项目管理
-1. `PROJECT(projectname [CXX] [C] [Java])`
-  
-  该命令会定义两个变量：`<projectname>_BINARY_DIR`和`<projectname>_SOURCE_DIR`，等价于
-## 添加头文件目录
 
-当我们用到外部的库的时候，我们便需要添加外部库的头文件所在目录作为头文件查找目录。在 CMakeLists 中添加以下代码即可：
 
-```
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../
-                    ${CMAKE_CURRENT_SOURCE_DIR}../include)
-```
 
-CMake 中通过空格或者换行区分多个变量，上面的示例便是添加了两个目录到头文件查找路径中。
-
-## 添加外部链接库
-
-通过以下代码可以添加外部链接库查找目录, 其中 CMAKE\_CURRENT\_SOURCE\_DIR 是内置宏， 表示当前 CMakeLists.txt 所在目录：
-
-```
-link_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../lib
-    ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
-```
-
-通过以下代码可以添加链接的外部库，这里链接 libmylib1 和 libmylib2， 这里链接的库可以是静态库也可以是动态库：
-
-```
-link_libraries(mylib1
-               mylib2)
-```
-
-如果是链接指定目录指定某个库，则可以用以下方式：
-
-```
-target_link_libraries(hello ../mylib1.a
-                      hello ../mylib2.so)
-```
-
-对于同一个工程中构建的库，则可以用以下方式，无需指定具体的库的位置：
-
-```
-target_link_libraries(hello mylib1 mylib2)
-```
-
-## 自定义编译选项
-
-编译选项的内置宏为 `CMAKE_CXX_FLAGS` ，只要将此宏设置为自定义的编译选项即可：
-
-```
-set(CMAKE_CXX_FLAGS “-std=c++11 -O2 -g”)
-```
-
-## 创建工程内的库
-
-创建库和创建可执行文件的 CMakeLists.txt 区别不大，只是讲 add\_executable 替换为：
-
-```
-add_library(mylib STATIC ${SRC})
-```
-
-STATIC表示创建静态库，目标文件为 libmylib.a，如果是 SHARED， 则为创建动态库.
 
 ## CMake 模块
 
