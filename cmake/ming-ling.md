@@ -45,6 +45,12 @@ file命令同时支持目录递归查找
 
 将若干库文件链接到生成的目标hello(libhello.a或libhello.so)，注意库文件的顺序符合gcc链接顺序的规则，即被依赖的库放在依赖它的库的后面
 `target_link_libraries(hello A B.a C.so)`
+也可以写成：
+```
+target_link_libraries(myProject eng mx)     
+target_link_libraries(myProject -leng -lmx) 
+target_link_libraries(myProject libeng.so libmx.so)
+```
 
 自定义链接选项，比如需要单独对B.a使用--whole-archive选项，可以
 `target_link_libraryies(hello A -Wl,--whole-archive B.a -Wl,--no-whole-archive C.so)`
