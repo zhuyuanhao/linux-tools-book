@@ -25,5 +25,5 @@
 
 * [glog](ku/glog.md)
   * [日志](ku/glog/ri-zhi.md)
-  * CHECK宏
+  * [CHECK宏](ku/glog/checkhong.md)
 
