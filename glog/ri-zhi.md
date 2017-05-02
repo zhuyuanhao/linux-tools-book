@@ -15,9 +15,23 @@ FATAL级别日志会在打印完成后终止程序。级别更高的日志会在
 `/tmp/<program name>.<hostname>.<user name>.log.<severity level>.<date>-<time>.<pid>` （比如 `/tmp/hello_world.example.com.hamaji.log.INFO.20080709-222411.10474`）。
 默认情况下，Glog对于 ERROR 和 FATAL 级别的日志会同时输出到stderr。
 
-## 关联GFLAGS
+## 参数配置
+glog中的配置项可以通过三种方法设置：
+1. 设置`GLOG_`前缀名的系统环境变量：
+```bash
+GLOG_logtostderr=1 ./your_application
+```
+2. 程序里修改gflags配置变量：
+   ```cpp
+   FLAGS_logtostderr = 1; 
+   LOG(INFO) << ...
+   ```
+注意`FLAGS_log_dir`比较特殊，如果想要生效，需要再调用`google::InitGoogleLogging`之前。
+3. 程序启动时在命令行配置gflags：
+`./your_application --logtostderr=1`
+注意需要安装了gflags库，我在编译安装glog时手动指定了gflags的位置：`--with-gflags=/path/to/gflags`
 
-一些 flag 参数会影响Glog的输出行为。如果安装了GFlags库，编译时会默认使用它，这样就可以在命令行传递flag（别忘了调用 ParseCommandLineFlags 初始化）。比如你想打开 --logtostderr flag，可以这么用：
+一些 flag 参数会影响Glog的输出行为。如果安装了GFlags库，编译时会默认使用它，这样就可以在命令行传递flag（别忘了调用 ParseCommandLineFlags 初始化）。比如你想打开 `--logtostderr` flag，可以这么用：
 
 ./your_application --logtostderr=1
 如果没有安装GFlags，那可以通过环境变量来设置，在flag名前面加上前缀 GLOG_ 。比如：
