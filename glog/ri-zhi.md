@@ -37,13 +37,13 @@ LOG(INFO) << ...
 
 **常用flag**
 
-* logtostderr （ bool ，默认为 false ）：日志输出到stderr，不输出到日志文件。
-* colorlogtostderr （ bool ，默认为 false ）：输出彩色日志到stderr。
-* stderrthreshold （ int ，默认为2，即 ERROR ）：将大于等于该级别的日志同时输出到stderr。日志级别 INFO, WARNING, ERROR, FATAL 的值分别为0、1、2、3。
-* minloglevel （ int ，默认为0，即 INFO ）：打印大于等于该级别的日志。日志级别的值同上。
-* log_dir （ string ，默认为 "" ）：指定输出日志文件的目录。
-* v （ int ，默认为0）：显示所有 VLOG(m) 的日志， m 小于等于该flag的值。会被 --vmodule 覆盖。
-* vmodule （ string ，默认为 "" ）：每个模块的详细日志的级别。参数为逗号分隔的一组 <module name>=<log level> 。 <module name> 支持通配（即gfs*代表所有gfs开头的名字），匹配不包含扩展名的文件名（忽略 .cc/.h./-inl.h 等）。 <log level> 会覆盖 --v 指定的值。
+* **logtostderr** [bool，默认为false]：日志输出到stderr，不输出到日志文件
+* **colorlogtostderr** [bool，默认为false]：输出彩色日志到stderr
+* **stderrthreshold** [int，默认为2，即ERROR]：将大于等于该级别的日志同时输出到stderr。INFO, WARNING, ERROR, FATAL 的值分别为0、1、2、3
+* **minloglevel** [int，默认为0，即INFO]：打印大于等于该级别的日志
+* **log_dir** [string，默认为""]：指定输出日志文件的目录
+* **v** [int，默认为0]：显示所有`VLOG(m)`的日志，m 小于等于该flag的值。会被`--vmodule`覆盖
+* **vmodule** [string，默认为""]：每个模块的详细日志的级别。参数为逗号分隔的一组`<module name>=<log level>`。`<module name>`支持通配（即gfs*代表所有gfs开头的名字），匹配不包含扩展名的文件名（忽略`.cc/.h./-inl.h`等）。 `<log level>`会覆盖`--v`指定的值
 
 logging.cc 中还定义了其他一些flag。grep一下 DEFINE_ 可以看到全部。
 
