@@ -17,17 +17,18 @@ FATAL级别日志会在打印完成后终止程序。级别更高的日志会在
 
 ## 参数配置
 glog中的配置项可以通过三种方法设置：
+
 1. 设置`GLOG_`前缀名的系统环境变量：
 ```bash
 GLOG_logtostderr=1 ./your_application
 ```
-2. 程序里修改gflags配置变量：
-   ```cpp
-   FLAGS_logtostderr = 1; 
-   LOG(INFO) << ...
-   ```
-注意`FLAGS_log_dir`比较特殊，如果想要生效，需要再调用`google::InitGoogleLogging`之前。
-3. 程序启动时在命令行配置gflags：
+1. 程序里修改gflags配置变量：
+```cpp
+FLAGS_logtostderr = 1; 
+LOG(INFO) << ...
+```
+注意`FLAGS_log_dir`比较特殊，如果想要生效，需要再调用`google::InitGoogleLogging()`之前。
+1. 程序启动时在命令行配置gflags：
 `./your_application --logtostderr=1`
 注意需要安装了gflags库，我在编译安装glog时手动指定了gflags的位置：`--with-gflags=/path/to/gflags`
 
