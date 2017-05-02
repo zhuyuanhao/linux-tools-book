@@ -23,7 +23,7 @@
 
 ## 库
 
-* [glog](ku/glog.md)
-  * [日志](ku/glog/ri-zhi.md)
-  * [CHECK宏](ku/glog/checkhong.md)
+* [glog](glog/readme.md)
+  * [日志](glog/ri-zhi.md)
+  * [CHECK宏](glog/checkhong.md)
 

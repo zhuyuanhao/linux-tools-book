@@ -1,9 +1,9 @@
 ## 1. 日志级别
 在`LOG(level) << ...`中指定日志级别，包括
-* INFO
-* WARNING
-* ERROR
-* FATAL
+* `INFO`
+* `WARNING`
+* `ERROR`
+* `FATAL`
 
 FATAL级别日志会在打印完成后终止程序。级别更高的日志会在同级别和所有低级别的日志文件中打印。
 
