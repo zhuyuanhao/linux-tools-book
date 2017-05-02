@@ -27,47 +27,25 @@ GLOG_logtostderr=1 ./your_application
 FLAGS_logtostderr = 1; 
 LOG(INFO) << ...
 ```
-注意`FLAGS_log_dir`比较特殊，如果想要生效，需要再调用`google::InitGoogleLogging()`之前。
+注意`FLAGS_log_dir`比较特殊，需要在调用`google::InitGoogleLogging()`之前设置。
 1. 程序启动时在命令行配置gflags：
-`./your_application --logtostderr=1`
-注意需要安装了gflags库，我在编译安装glog时手动指定了gflags的位置：`--with-gflags=/path/to/gflags`
-
-一些 flag 参数会影响Glog的输出行为。如果安装了GFlags库，编译时会默认使用它，这样就可以在命令行传递flag（别忘了调用 ParseCommandLineFlags 初始化）。比如你想打开 `--logtostderr` flag，可以这么用：
-
+```bash
 ./your_application --logtostderr=1
-如果没有安装GFlags，那可以通过环境变量来设置，在flag名前面加上前缀 GLOG_ 。比如：
+```
+注意需要安装了gflags库，且在编译安装glog时手动指定了gflags的位置：`--with-gflags=/path/to/gflags`，使用前调用了gflags 的`ParseCommandLineFlags()`函数初始化
 
-GLOG_logtostderr=1 ./your_application
 
-常用的flag有：
+**常用flag**
 
-logtostderr （ bool ，默认为 false ）
-日志输出到stderr，不输出到日志文件。
-colorlogtostderr （ bool ，默认为 false ）
-输出彩色日志到stderr。
-stderrthreshold （ int ，默认为2，即 ERROR ）
-将大于等于该级别的日志同时输出到stderr。日志级别 INFO, WARNING, ERROR, FATAL 的值分别为0、1、2、3。
-minloglevel （ int ，默认为0，即 INFO ）
-打印大于等于该级别的日志。日志级别的值同上。
-log_dir （ string ，默认为 "" ）
-指定输出日志文件的目录。
-v （ int ，默认为0）
-显示所有 VLOG(m) 的日志， m 小于等于该flag的值。会被 --vmodule 覆盖。
-vmodule （ string ，默认为 "" ）
-每个模块的详细日志的级别。参数为逗号分隔的一组 <module name>=<log level> 。 <module name> 支持通配（即gfs*代表所有gfs开头的名字），匹配不包含扩展名的文件名（忽略 .cc/.h./-inl.h 等）。 <log level> 会覆盖 --v 指定的值。
+* logtostderr （ bool ，默认为 false ）：日志输出到stderr，不输出到日志文件。
+* colorlogtostderr （ bool ，默认为 false ）：输出彩色日志到stderr。
+* stderrthreshold （ int ，默认为2，即 ERROR ）：将大于等于该级别的日志同时输出到stderr。日志级别 INFO, WARNING, ERROR, FATAL 的值分别为0、1、2、3。
+* minloglevel （ int ，默认为0，即 INFO ）：打印大于等于该级别的日志。日志级别的值同上。
+* log_dir （ string ，默认为 "" ）：指定输出日志文件的目录。
+* v （ int ，默认为0）：显示所有 VLOG(m) 的日志， m 小于等于该flag的值。会被 --vmodule 覆盖。
+* vmodule （ string ，默认为 "" ）：每个模块的详细日志的级别。参数为逗号分隔的一组 <module name>=<log level> 。 <module name> 支持通配（即gfs*代表所有gfs开头的名字），匹配不包含扩展名的文件名（忽略 .cc/.h./-inl.h 等）。 <log level> 会覆盖 --v 指定的值。
+
 logging.cc 中还定义了其他一些flag。grep一下 DEFINE_ 可以看到全部。
-
-也可以通过修改 FLAGS_* 全局变量来改变flag的值。
-
-LOG(INFO) << "file";
-// Most flags work immediately after updating values.
-FLAGS_logtostderr = 1;
-LOG(INFO) << "stderr";
-FLAGS_logtostderr = 0;
-// This won't change the log destination. If you want to set this
-// value, you should do this before google::InitGoogleLogging .
-FLAGS_log_dir = "/some/log/directory";
-LOG(INFO) << "the same file";
 
 按条件/次数打印日志
 有时你可能只想在满足一定条件的时候打印日志。可以使用下面的宏来按条件打印日志：
